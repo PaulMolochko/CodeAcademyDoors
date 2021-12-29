@@ -3,7 +3,12 @@ body {
     margin: 0px;
   }
   
-  .door-frame {
+.header {
+    background-color: #00fff0;
+    text-align: center;
+}
+
+.door-frame {
     cursor : pointer;
     padding: 10px;
-  }
+}
