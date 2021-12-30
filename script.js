@@ -59,7 +59,6 @@ const gameOver = status => {
 
 const randomChoreDoorGenerator = () => {
     const choreDoor = Math.floor(Math.random() * numClosedDoors);
-    console.log(choreDoor);
     switch (choreDoor) {
         case 0:
             openDoor1 = botDoorPath;
@@ -77,7 +76,6 @@ const randomChoreDoorGenerator = () => {
             openDoor3 = botDoorPath;
             break;
         }
-        console.table([openDoor1, openDoor2, openDoor3]);
 }
 
 randomChoreDoorGenerator();
