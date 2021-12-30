@@ -13,8 +13,15 @@ let openDoor2;
 let openDoor3;
 let numClosedDoors = 3;
 
+const isBot = door => {
+   if (door.src === botDoorPath){
+       return true;
+   } else {
+       return false;
+   }
+}
+
 function isClicked(door) {
-    //door.src === closedDoorPath ? false : true;
     if (door.src === closedDoorPath) {
             return false;
         } else {
@@ -22,37 +29,39 @@ function isClicked(door) {
         }
 }
 
-const playDoor = () => {
+const playDoor = (door) => {
     numClosedDoors--;
     if (numClosedDoors === 0) {
         gameOver('win');
+    } else if (isBot(door)){
+            gameOver();
     }
 }
 
 doorImage1.onclick = () => {
     if(!isClicked(doorImage1)) {
         doorImage1.src = openDoor1;
-        playDoor()
+        playDoor(doorImage1);
         }
     }
     doorImage2.onclick = () => {
     if(!isClicked(doorImage2)) {
         doorImage2.src = openDoor2;
-        playDoor();
+        playDoor(doorImage2);
     }
 }
 doorImage3.onclick = () => {
     if(!isClicked(doorImage3)) {
         doorImage3.src = openDoor3;
-        playDoor();
+        playDoor(doorImage3);
     }
 }
 
 const gameOver = status => {
     if (status === 'win') {
-        startButton.innerHTML = 'You win! Start Again?'
+        startButton.innerHTML = 'You won! Start Again?'
     } else {
-
+        startButton.innerHTML = 'You lost! Start Again?'
     }
 }
 
