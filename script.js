@@ -13,6 +13,8 @@ let openDoor2;
 let openDoor3;
 let numClosedDoors = 3;
 
+let currentlyPlaying = true;
+
 const isBot = door => {
    if (door.src === botDoorPath){
        return true;
@@ -39,19 +41,19 @@ const playDoor = (door) => {
 }
 
 doorImage1.onclick = () => {
-    if(!isClicked(doorImage1)) {
+    if(currentlyPlaying === true && !isClicked(doorImage1)) {
         doorImage1.src = openDoor1;
         playDoor(doorImage1);
         }
     }
     doorImage2.onclick = () => {
-    if(!isClicked(doorImage2)) {
+    if(currentlyPlaying === true && !isClicked(doorImage2)) {
         doorImage2.src = openDoor2;
         playDoor(doorImage2);
     }
 }
 doorImage3.onclick = () => {
-    if(!isClicked(doorImage3)) {
+    if(currentlyPlaying === true && !isClicked(doorImage3)) {
         doorImage3.src = openDoor3;
         playDoor(doorImage3);
     }
@@ -63,6 +65,7 @@ const gameOver = status => {
     } else {
         startButton.innerHTML = 'You lost! Start Again?'
     }
+    currentlyPlaying = false;
 }
 
 
