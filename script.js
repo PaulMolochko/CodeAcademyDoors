@@ -16,19 +16,11 @@ let numClosedDoors = 3;
 let currentlyPlaying = true;
 
 const isBot = door => {
-   if (door.src === botDoorPath){
-       return true;
-   } else {
-       return false;
-   }
+   return (door.src === botDoorPath ? true : false);
 }
 
 function isClicked(door) {
-    if (door.src === closedDoorPath) {
-            return false;
-        } else {
-            return true;
-        }
+    return (door.src === closedDoorPath ? false : true);
 }
 
 const playDoor = (door) => {
@@ -36,7 +28,7 @@ const playDoor = (door) => {
     if (numClosedDoors === 0) {
         gameOver('win');
     } else if (isBot(door)){
-            gameOver();
+        gameOver();
     }
 }
 
@@ -46,7 +38,7 @@ doorImage1.onclick = () => {
         playDoor(doorImage1);
         }
     }
-    doorImage2.onclick = () => {
+doorImage2.onclick = () => {
     if(currentlyPlaying === true && !isClicked(doorImage2)) {
         doorImage2.src = openDoor2;
         playDoor(doorImage2);
@@ -83,7 +75,6 @@ const gameOver = status => {
     }
     currentlyPlaying = false;
 }
-
 
 const randomChoreDoorGenerator = () => {
     const choreDoor = Math.floor(Math.random() * numClosedDoors);
